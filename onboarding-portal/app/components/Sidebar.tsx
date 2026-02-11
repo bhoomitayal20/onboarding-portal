@@ -15,11 +15,11 @@ export default function Sidebar() {
     const interval = setInterval(() => {
       const role = localStorage.getItem("role");
       setRole(role);
-  
+
       if (role === "candidate") {
         const candidateId = localStorage.getItem("candidateId");
         if (!candidateId) return;
-  
+
         // Emails
         const storedEmails = localStorage.getItem("emailsByUser");
         if (storedEmails) {
@@ -27,7 +27,7 @@ export default function Sidebar() {
           const list = all[`candidate_${candidateId}`] || [];
           setUnreadEmails(list.filter((e: any) => !e.read).length);
         }
-  
+
         // Notifications
         const storedNotifs = localStorage.getItem("notificationsByUser");
         if (storedNotifs) {
@@ -39,11 +39,9 @@ export default function Sidebar() {
         }
       }
     }, 2000);
-  
+
     return () => clearInterval(interval);
   }, []);
-  
-  
 
   const handleLogout = () => {
     localStorage.removeItem("role");
@@ -59,6 +57,7 @@ export default function Sidebar() {
         </h2>
 
         <nav className="flex flex-col gap-4">
+          {/* Common Dashboard */}
           <Link
             href="/dashboard"
             className="text-gray-700 hover:text-blue-600"
@@ -66,34 +65,34 @@ export default function Sidebar() {
             Dashboard
           </Link>
 
+          {/* Recruiter Links */}
           {role === "recruiter" && (
-            <Link
-              href="/dashboard/candidates"
-              className="text-gray-700 hover:text-blue-600"
-            >
-              Candidates
-            </Link>
+            <>
+              <Link
+                href="/dashboard/candidates"
+                className="text-gray-700 hover:text-blue-600"
+              >
+                Candidates
+              </Link>
+
+              <Link
+                href="/dashboard/activity"
+                className="text-gray-700 hover:text-blue-600"
+              >
+                Activity
+              </Link>
+
+              {/* 🔥 NEW FEATURE ADDED HERE */}
+              <Link
+                href="/dashboard/hospital-import"
+                className="text-gray-700 hover:text-blue-600"
+              >
+                Hospital Import
+              </Link>
+            </>
           )}
-          {role === "recruiter" && (
-  <>
-    <Link
-      href="/dashboard/candidates"
-      className="text-gray-700 hover:text-blue-600"
-    >
-      Candidates
-    </Link>
 
-    <Link
-      href="/dashboard/activity"
-      className="text-gray-700 hover:text-blue-600"
-    >
-      Activity
-    </Link>
-  </>
-)}
-
-
-
+          {/* Candidate Links */}
           {role === "candidate" && (
             <>
               <Link
@@ -102,14 +101,14 @@ export default function Sidebar() {
               >
                 Documents
               </Link>
-              
+
               <Link
-               href="/dashboard/timeline"
-               className="text-gray-700 hover:text-blue-600"
+                href="/dashboard/timeline"
+                className="text-gray-700 hover:text-blue-600"
               >
-               Timeline
+                Timeline
               </Link>
-              
+
               <Link
                 href="/dashboard/notifications"
                 className="flex items-center justify-between text-gray-700 hover:text-blue-600"
@@ -124,18 +123,17 @@ export default function Sidebar() {
               </Link>
 
               <Link
-  href="/dashboard/emails"
-  className="flex items-center justify-between text-gray-700 hover:text-blue-600"
->
-  <span>Emails</span>
+                href="/dashboard/emails"
+                className="flex items-center justify-between text-gray-700 hover:text-blue-600"
+              >
+                <span>Emails</span>
 
-  {unreadEmails > 0 && (
-    <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">
-      {unreadEmails}
-    </span>
-  )}
-</Link>
-
+                {unreadEmails > 0 && (
+                  <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                    {unreadEmails}
+                  </span>
+                )}
+              </Link>
             </>
           )}
         </nav>
