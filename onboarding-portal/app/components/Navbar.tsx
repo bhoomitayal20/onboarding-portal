@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <nav className="flex items-center justify-between px-8 py-4 bg-white border-b">
       <h1 className="text-xl font-bold text-blue-600">
-        RecruitPortal
+        RecruitHub
       </h1>
 
       <div className="flex gap-6 items-center">

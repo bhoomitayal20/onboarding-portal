@@ -53,7 +53,7 @@ export default function Sidebar() {
     <aside className="w-64 bg-white border-r p-6 flex flex-col justify-between">
       <div>
         <h2 className="text-xl font-bold text-blue-600 mb-8">
-          RecruitPortal
+          RecruitHub
         </h2>
 
         <nav className="flex flex-col gap-4">
