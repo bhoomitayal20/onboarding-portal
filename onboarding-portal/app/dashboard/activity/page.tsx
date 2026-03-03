@@ -137,21 +137,25 @@ export default function ActivityPage() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
         <FeatureCard
           title="Medical Examination"
+          description="track medical verification"
           count={medicalCount}
           status="action"
         />
         <FeatureCard
           title="Background Verification"
+          description="track background verification"
           count={backgroundCount}
           status="processing"
         />
         <FeatureCard
           title="Final Clearance"
+          description="track final clearance"
           count={finalClearanceCount}
           status="review"
         />
         <FeatureCard
           title="Joining Letters"
+          description="track joining letters"
           count={joiningCount}
           status="ready"
         />
