@@ -1,15 +1,17 @@
 type FeatureCardProps = {
   title: string;
+  description: string
   count: number;
   status: "action" | "processing" | "review" | "ready";
   onManage?: () => void;
 };
 
 export default function FeatureCard({
-  title,
+title,
+description,
   count,
-  status,
-  onManage,
+status,
+onManage,
 }: FeatureCardProps) {
   const statusStyles = {
     action: "bg-red-100 text-red-600",
@@ -37,6 +39,8 @@ export default function FeatureCard({
 
       {/* Title */}
       <h4 className="text-lg font-semibold mt-4">{title}</h4>
+      {/*Description*/}
+      <p className="text-gray-500 text-sm mt-1">{description}</p>
 
       {/* Count */}
       <p className="text-3xl font-bold mt-2">{count}</p>
